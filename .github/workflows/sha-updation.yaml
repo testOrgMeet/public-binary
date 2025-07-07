@@ -29,7 +29,7 @@ jobs:
           # Replace all occurrences of SHA: <old> with SHA: $LATEST_SHA (8+ hex chars)
           sed -i "s|SHA:\s*[a-zA-Z0-9._-]*|SHA: $LATEST_SHA|g" index.html
           # Replace all occurrences of secure-code-dev/gha-security@<sha> with the new SHA
-          sed -i "s|secure-code-dev/gha-security@[a-zA-Z0-9._-]\+|secure-code-dev/gha-security@$LATEST_SHA|g" index.html
+          sed -i "s|secure-code-dev/gha-security@[^ \"']*|secure-code-dev/gha-security@$LATEST_SHA|g" index.html
 
       - name: Commit and push changes
         run: |
