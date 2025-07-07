@@ -16,6 +16,7 @@ jobs:
         id: sha
         run: |
           LATEST_SHA=$(git log -n 1 --pretty=format:%H -- GHA-SEC)
+          exho "latest_commit= $LATEST_SHA"
           echo "LATEST_SHA=$LATEST_SHA" >> $GITHUB_ENV
 
       - name: Update SHA in index.html
