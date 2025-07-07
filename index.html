@@ -588,7 +588,7 @@
                     <p>Compatible with Windows 10 and 11. Full feature support with native Windows integration.</p>
                     <div class="download-info">
                         <span class="version">v2.1.0</span>
-                        <span class="size">SHA: bc3e65f66d20fda66acb06e4b3380a61c4223940</span>
+                        <span class="size">SHA: 3401d5733b52a0614f7ad480ecb85078aaf2cf78</span>
                     </div>
                     <button class="download-btn" onclick="showInstructions('windows')">
                         <span>📋</span> Windows
@@ -605,7 +605,7 @@
                     <p>Universal Linux build supporting Ubuntu, Fedora, CentOS, and other major distributions.</p>
                     <div class="download-info">
                         <span class="version">v2.1.0</span>
-                        <span class="size">SHA: bc3e65f66d20fda66acb06e4b3380a61c4223940</span>
+                        <span class="size">SHA: 3401d5733b52a0614f7ad480ecb85078aaf2cf78</span>
                     </div>
                     <button class="download-btn" onclick="showInstructions('linux')">
                         <span>📋</span> Linux
@@ -622,7 +622,7 @@
                     <p>Native macOS application with Apple Silicon support. Compatible with macOS 11.0 and later.</p>
                     <div class="download-info">
                         <span class="version">v2.1.0</span>
-                        <span class="size">SHA: bc3e65f66d20fda66acb06e4b3380a61c4223940</span>
+                        <span class="size">SHA: 3401d5733b52a0614f7ad480ecb85078aaf2cf78</span>
                     </div>
                     <button class="download-btn" onclick="showInstructions('macos')">
                         <span>📋</span> macOS
@@ -736,7 +736,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: secure-code-dev/gha-security@bc3e65f66d20fda66acb06e4b3380a61c4223940
+      - uses: secure-code-dev/gha-security@3401d5733b52a0614f7ad480ecb85078aaf2cf78
         with:
           token: \${{ secrets.GITHUB_TOKEN }}
           platform: windows</pre>
@@ -759,7 +759,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: secure-code-dev/gha-security@bc3e65f66d20fda66acb06e4b3380a61c4223940 
+      - uses: secure-code-dev/gha-security@3401d5733b52a0614f7ad480ecb85078aaf2cf78 
         with:
           token: \${{ secrets.GITHUB_TOKEN }}
           platform: linux</pre>
@@ -782,7 +782,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: secure-code-dev/gha-security@bc3e65f66d20fda66acb06e4b3380a61c4223940
+      - uses: secure-code-dev/gha-security@3401d5733b52a0614f7ad480ecb85078aaf2cf78
         with:
           token: \${{ secrets.GITHUB_TOKEN }}
           platform: macos</pre>
