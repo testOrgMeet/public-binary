@@ -1,9 +1,7 @@
 name: Update SHA in index.html
 
 on:
-  push:
-    paths:
-      - 'GHA-SEC/**'
+  workflow_dispatch:
 
 jobs:
   update-sha:
