@@ -15,7 +15,7 @@ jobs:
       - name: Get latest commit SHA for GHA-policy-scanner
         id: sha
         run: |
-          LATEST_SHA=$(git log -n 1 --pretty=format:%H -- GHA-policy-scanner)
+          LATEST_SHA=$(git log -n 1 --pretty=format:%H -- GHA-SEC)
           echo "LATEST_SHA=$LATEST_SHA" >> $GITHUB_ENV
 
       - name: Update SHA in index.html
