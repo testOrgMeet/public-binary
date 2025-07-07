@@ -1,0 +1,38 @@
+name: Update SHA in index.html
+
+on:
+  push:
+    paths:
+      - 'GHA-SEC/**'
+
+jobs:
+  update-sha:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Get latest commit SHA for GHA-policy-scanner
+        id: sha
+        run: |
+          LATEST_SHA=$(git log -n 1 --pretty=format:%H -- GHA-policy-scanner)
+          echo "LATEST_SHA=$LATEST_SHA" >> $GITHUB_ENV
+
+      - name: Update SHA in index.html
+        run: |
+          # Replace all occurrences of SHA: <old> with SHA: $LATEST_SHA (8+ hex chars)
+          sed -i -E "s/SHA: [0-9a-fA-F]{8,}/SHA: $LATEST_SHA/g" index.html
+          # Replace all occurrences of secure-code-dev/gha-security@<sha> with the new SHA
+          sed -i -E "s|(secure-code-dev/gha-security@)[0-9a-fA-F]{8,}|\1$LATEST_SHA|g" index.html
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet index.html; then
+            git add index.html
+            git commit -m "Update SHA in index.html to $LATEST_SHA [auto]"
+            git push
+          else
+            echo "No changes to commit."
+          fi 
