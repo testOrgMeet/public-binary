@@ -19,12 +19,17 @@ jobs:
           echo "latest_commit= $LATEST_SHA"
           echo "LATEST_SHA=$LATEST_SHA" >> $GITHUB_ENV
 
+      - name: Debug - Print SHA lines
+        run: |
+          grep 'SHA:' index.html || true
+          grep 'secure-code-dev/gha-security@' index.html || true
+
       - name: Update SHA in index.html
         run: |
           # Replace all occurrences of SHA: <old> with SHA: $LATEST_SHA (8+ hex chars)
-          sed -i -E "s/SHA: [0-9a-fA-F]{8,}/SHA: $LATEST_SHA/g" index.html
+          sed -i -E "s/(SHA: )[0-9a-fA-F]{8,40}/\\1$LATEST_SHA/g" index.html
           # Replace all occurrences of secure-code-dev/gha-security@<sha> with the new SHA
-          sed -i -E "s|(secure-code-dev/gha-security@)[0-9a-fA-F]{8,}|\1$LATEST_SHA|g" index.html
+          sed -i -E "s|(secure-code-dev/gha-security@)[0-9a-fA-F]{8,40}|\\1$LATEST_SHA|g" index.html
 
       - name: Commit and push changes
         run: |
